@@ -3,15 +3,22 @@ import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
-import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+import PoofersResult from '../../components/PoofersResult.astro';
+
 ---
 
 <!doctype html>
+<script>
+import {initializePoofers} from './poofers.ts';
+
+initializePoofers();
+
+</script>
+
+
+
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
@@ -84,27 +91,59 @@ const posts = (await getCollection('blog')).sort(
 				}
 			}
 		</style>
+		<style is:global>
+		  .roll-result {
+			background-color: gray;
+			display: inline-block;
+			width:100%;
+			border-radius:6px;
+			margin-bottom: 1em;
+		  }
+
+		  .roll-result .damage {
+			padding: .5em;
+		  }
+
+		  .roll-result .damage-result {
+			display: inline-block;
+			float:right;
+		  }
+
+		  .roll-result span {
+			padding: 2px 6px 2px 6px;
+			border-radius: 8px;
+		  }
+
+		  .roll-result .damage-result .dice-result {
+			background-color: #a6a6a6;
+			margin-left: .5em;
+		  }
+
+		  .roll-result .damage-result .damage-total {
+			margin-left: 2em;
+			background-color: #cccccc;
+		  }
+		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									<img width={720} height={360} src={post.data.heroImage} alt="" />
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
+			<div class = "content"> Did this work? </div>
+
+			<div id="rollem">
+  <div id="inputs">
+    Times : <input type="text" class="times" /><br>
+    Reckless : <input type="checkbox" class="adv" /><br>
+    <button class="roll">
+      ROLL DAMAGE
+    </button>
+  </div>
+  <br><br>
+  <div id="rolls-container"></div>
+  <div id="results">
+  </div>
+</div>
+
 		</main>
 		<Footer />
 	</body>
