@@ -13,7 +13,6 @@ function InitiateRoll(times: number, advantage: boolean) {
 
         CreateAttack({
             numAttacks: numHits,
-            // Hit details
             hitDetails: {
                 modifiers:
                     [
@@ -23,7 +22,6 @@ function InitiateRoll(times: number, advantage: boolean) {
                     ],
                 d20Modifier: advantage ? D20Modifier.ADVANTAGE : D20Modifier.NONE
             },
-            // Damage details
             damageDetails: [
                 {
                     label: 'Weapon',
