@@ -2,6 +2,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import AttackResult from '../../components/AttackResult.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import FormattedDate from '../../components/FormattedDate.astro';
 
@@ -11,7 +12,7 @@ import PoofersResult from '../../components/PoofersResult.astro';
 
 <!doctype html>
 <script>
-import {initializePoofers} from './poofers.ts';
+import {initializePoofers} from '../../typescript/characters/poofers.ts';
 
 initializePoofers();
 
@@ -91,94 +92,6 @@ initializePoofers();
 				}
 			}
 		</style>
-		<style is:global>
-        #rolls-container {
-			display: flex;
-			justify-content: space-between;
-			gap: 1em;
-
-			.attack-result {
-				background-color: gray;
-				display: inline-block;
-				border-radius: 1em;
-				width: 100%;
-
-				.damage-container {
-					padding: .5em;
-
-					.result-row {
-						margin-bottom: .2em; 
-						
-						.dice-result {
-							padding: 2px 6px 2px 6px;
-							border-radius: 12px;
-							display: inline-block;
-							min-width: 1em;
-							text-align: center;
-							position: relative;
-
-							.dice-roll-sides {
-								position: absolute;
-								font-weight: bold;
-								font-size: 0.9em;
-								right: -5px;
-								top: -8px;
-								color: #ffffff;
-								-webkit-text-stroke: 1px #404040;
-								opacity: .6;
-								text-shadow: 2px 2px black;
-							}
-						}
-
-						.damage-result {
-							display: inline-block;
-							float:right;
-
-							.dice-result {
-								background-color: #a6a6a6;
-								margin-left: .5em;
-							}
-
-							.damage-total {
-								margin-left: 2em;
-								background-color: #cccccc;
-							}
-						}
-					}
-
-					.result-row.result-summary {
-						.damage-label {
-							color: #ffffff;
-							weight: bold;
-						}
-					}
-
-					.result-details-container {
-						font-size: .75em;
-						opacity: 0.7;
-						padding: 0.5em 0.5em 0.5em 1em;
-						border-radius: 1em;
-						background-color: #aaaaaa ;
-						margin: 1em 0 0 0;
-
-						.result-row {
-							margin: .5em 0 0.5em 0;
-
-							span {
-								padding: 0 .25em 0 .25em;
-							}
-						}
-					}
-				}
-
-				.attack-total {
-					padding: .5em;
-					text-align: center;
-					font-weight: bold;
-				}
-			}
-		}
-		</style>
 	</head>
 	<body>
 		<Header />
@@ -194,9 +107,7 @@ initializePoofers();
     </button>
   </div>
   <br><br>
-  <div id="rolls-container"></div>
-  <div id="results">
-  </div>
+  <AttackResult />
 </div>
 
 		</main>
