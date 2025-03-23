@@ -9,81 +9,114 @@
             display: inline-block;
             border-radius: 1em;
             width: 100%;
+            font-size: 16px;
+            padding: 1em 0 0 0;
 
-            .damage-container {
+            .dice-roll-row.result-summary {
+                > span {
+                    color: #ffffff;
+                    weight: bold;
+                }
+
+                .hit-label {
+                    font-size: 1.2em;
+                    font-weight: bold;
+                    font-style: italic;
+                }
+            }
+
+            .dice-roll-container {
                 padding: .5em;
 
-                .result-row {
-                    margin-bottom: .2em; 
-                    
-                    .dice-result {
-                        padding: 2px 6px 2px 6px;
-                        border-radius: 12px;
-                        display: inline-block;
-                        min-width: 1em;
-                        text-align: center;
-                        position: relative;
+                .dice-roll {
+                    background-color: #a6a6a6;
+                    margin-left: .5em;
+                    padding: 2px 6px 2px 6px;
+                    border-radius: 12px;
+                    display: inline-block;
+                    min-width: 1.4em;
+                    text-align: center;
+                    position: relative;
 
-                        .dice-roll-sides {
-                            position: absolute;
-                            font-weight: bold;
-                            font-size: 0.9em;
-                            right: -5px;
-                            top: -8px;
-                            color: #ffffff;
-                            -webkit-text-stroke: 1px #404040;
-                            opacity: .6;
-                            text-shadow: 2px 2px black;
-                        }
+                    .dice-roll-sides {
+                        position: absolute;
+                        font-size: 0.8em;
+                        right: -5px;
+                        top: -11px;
+                        color: #ffffff;
+                        opacity: .6;
+                        width: 1.5em;
+                        text-align: right;
+                    }
+                }
+            }
+
+            .dice-roll-row {
+                margin-bottom: .2em; 
+
+                .dice-result-container {
+                    display: inline-block;
+                    float:right;
+
+                    .dice-final-result {
+                        margin-left: 2em;
+                        background-color: #cccccc;
                     }
 
-                    .damage-result {
+                    .dice-crit {
+                        color: #187525;
+                        font-weight: bold;
+                    }
+
+                    .dice-fail {
+                        color: #751818;
+                        font-weight: bold;
+                    }
+                }
+            }
+
+            .modifiers-container {
+                font-size: .75em;
+                opacity: 0.7;
+                padding: 0.5em 0.5em 0.5em 1em;
+                border-radius: 1em;
+                background-color: #aaaaaa ;
+                margin: 1em 0 0 0;
+
+                .modifier-row {
+                    margin: .25em 0 0.25em 0;
+
+                    span {
+                        padding: 0 .25em 0 .25em;
+                        font-style: italic;
+                    }
+
+                    .modifier-result-container {
                         display: inline-block;
                         float:right;
 
-                        .dice-result {
-                            background-color: #a6a6a6;
+                        .dice-roll {
+                            background-color: transparent;
                             margin-left: .5em;
+                            padding-top: 0;
+                            padding-bottom: 0;
                         }
 
-                        .damage-total {
+                        .dice-final-result {
                             margin-left: 2em;
                             background-color: #cccccc;
                         }
                     }
                 }
-
-                .result-row.result-summary {
-                    .damage-label {
-                        color: #ffffff;
-                        weight: bold;
-                    }
-                }
-
-                .result-details-container {
-                    font-size: .75em;
-                    opacity: 0.7;
-                    padding: 0.5em 0.5em 0.5em 1em;
-                    border-radius: 1em;
-                    background-color: #aaaaaa ;
-                    margin: 1em 0 0 0;
-
-                    .result-row {
-                        margin: .5em 0 0.5em 0;
-
-                        span {
-                            padding: 0 .25em 0 .25em;
-                        }
-                    }
-                }
-            }
-
-            .attack-total {
-                padding: .5em;
-                text-align: center;
-                font-weight: bold;
             }
         }
+
+        .attack-total {
+            padding: .5em;
+            text-align: center;
+            font-weight: bold;
+        }
+        
     }
 </style>
 
